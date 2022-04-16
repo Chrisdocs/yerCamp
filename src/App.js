@@ -1,11 +1,15 @@
-import './App.css';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
-function App() {
+import Nav from "./Components/Navigation/Nav";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+
+export default function App() {
   return (
     <>
-    <h2>App Home</h2>
+      <Nav />
     </>
   );
 }
-
-export default App;
