@@ -1,10 +1,14 @@
 import React, { Component, useState } from "react";
 
 export default function CreateList() {
+  const listItemsArr = [];
+
   const [listDesc, setListDesc] = useState("");
   const [listType, setListType] = useState("");
   const [listPriority, setListPriority] = useState("");
   const [listComp, setListComp] = useState(false);
+  const [listItems, setListItems] = useState([]);
+  const [itemValue, setItemValue] = useState("")
 
   const updateListDesc = (e) => {
     setListDesc(e.target.value);
@@ -16,6 +20,11 @@ export default function CreateList() {
 
   const updateListPriority = (e) => {
     setListPriority(e.target.value);
+  };
+
+  const listItemsHandler = (e) => {
+    setItemValue(e.target.value);
+    console.log(itemValue)
   };
 
   const updateListComp = (e) => {};
@@ -32,6 +41,14 @@ export default function CreateList() {
     setListDesc("");
     setListPriority("");
     setListComp(false);
+  };
+
+  const handleItemSubmit = (e) => {
+      e.preventDefault();
+
+      setListItems(listItemsArr.push(itemValue))
+
+    console.log("submitted!", listItems, listItemsArr);
   };
 
   return (
@@ -94,6 +111,19 @@ export default function CreateList() {
               />
               <label className="form-check-label">High</label>
             </div>
+            <div className="form-group">
+              <div className="checkList">
+                <div className="title">Your CheckList:</div>
+                <div className="list-container">
+                  {listItemsArr.map((item, index) => (
+                    <div key={index}>
+                      <input type="checkbox" value={item} />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
           <div className="form-group">
             <input
@@ -102,6 +132,14 @@ export default function CreateList() {
               className="btn btn-primary"
             />
           </div>
+        </form>
+
+        <form onSubmit={handleItemSubmit}>
+          <label>
+            List Item:
+            <input type="text" name="name" value={itemValue} onChange={listItemsHandler}/>
+          </label>
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     </>
