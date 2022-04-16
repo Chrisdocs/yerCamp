@@ -19,9 +19,9 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      {/* <Route path="checklist" element={<Checklist />} />
+      <Route path="checklist" element={<Checklist />} />
       <Route path="createlist" element={<CreateList />} />
-      <Route path="editlist" element={<EditList />} /> */}
+      <Route path="editlist" element={<EditList />} />
     </Routes>
   </BrowserRouter>
 );
